@@ -16,7 +16,7 @@ object DataLoader {
 
     if (train) data.map(x => categoricalDict.getOrElseUpdate(x.head, categoricalDict.size + 1))
 
-    data = data.map(x => oneHotCast(x))
+    data = data.map(oneHotCast)
 
     val dataBreeze = DenseMatrix.tabulate(data.length, data.head.length)((i, j) => data(i)(j).toDouble)
     val y = dataBreeze(0 until dataBreeze.rows, categoricalDict.size)

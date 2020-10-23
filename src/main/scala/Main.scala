@@ -10,14 +10,14 @@ object Main {
 
     val linReg = new LinearRegression
 
-    linReg.fit(trainDataSet.getFeatures, trainDataSet.getTarget)
+    linReg.fit(trainDataSet.features, trainDataSet.target)
 
     print("Train error:")
-    println(linReg.mse(trainDataSet.getTarget, linReg.predict(trainDataSet.getFeatures)))
+    println(linReg.mse(trainDataSet.target, linReg.predict(trainDataSet.features)))
 
     print("Test error:")
-    println(linReg.mse(testDataSet.getTarget, linReg.predict(testDataSet.getFeatures)))
+    println(linReg.mse(testDataSet.target, linReg.predict(testDataSet.features)))
 
-    csvwrite(new File("src/main/scala/out.csv"), linReg.predict(testDataSet.getFeatures).toDenseMatrix)
+    csvwrite(new File("src/main/scala/out.csv"), linReg.predict(testDataSet.features).toDenseMatrix)
   }
 }
